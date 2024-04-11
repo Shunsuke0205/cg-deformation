@@ -63,14 +63,14 @@ int main(int argc, char *argv[])
   U = V;
   igl::opengl::glfw::Viewer viewer;
   std::cout<<R"(
-[click]  To place new control point
-[drag]   To move control point
-[space]  Toggle whether placing control points or deforming
-M,m      Switch deformation methods
-U,u      Update deformation (i.e., run another iteration of solver)
-R,r      Reset control points 
-⌘ Z      Undo
-⌘ ⇧ Z    Redo
+[click]   To place new control point
+[drag]    move control point
+[space]   Toggle whether placing control points or deforming
+M,m       Switch deformation methods
+U,u       Update deformation (i.e., run another iteration of solver)
+R,r       Reset control points 
+Ctrl + Z  Undo
+Ctrl + Shift + Z    Redo
 )";
   enum Method
   {
@@ -250,7 +250,7 @@ R,r      Reset control points
   viewer.callback_key_down = 
     [&](igl::opengl::glfw::Viewer &, unsigned char key, int mod)->bool
   {
-    if(key == 'Z' && (mod & GLFW_MOD_SUPER))
+    if(key == 'Z' && (mod & GLFW_MOD_CONTROL))
     {
       (mod & GLFW_MOD_SHIFT) ? redo() : undo();
       update();
