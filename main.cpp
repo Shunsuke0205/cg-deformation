@@ -69,8 +69,8 @@ int main(int argc, char *argv[])
 M,m       Switch deformation methods
 U,u       Update deformation (i.e., run another iteration of solver)
 R,r       Reset control points 
-Ctrl + Z  Undo
-Ctrl + Shift + Z    Redo
+Ctrl + z  Undo
+Ctrl + Shift + z    Redo
 )";
   enum Method
   {
