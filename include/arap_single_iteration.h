@@ -2,6 +2,8 @@
 #define ARAP_SINGLE_ITERATION_H
 #include <Eigen/Core>
 #include <Eigen/Sparse>
+#include "arap_precompute.h"
+#include "igl/polar_svd3x3.h"
 
 namespace igl
 {
@@ -14,17 +16,18 @@ namespace igl
 // the _positions_ of all vertices of the mesh (by overwriting `U`).
 //
 // Inputs:
-//   data  pre-factorized system matrix etc. (see `arap_precompute`
-//   K  pre-constructed bi-linear term of energy combining rotations and
-//     positions
-//   U  #V by dim list of current (not necessarily at rest) positions (see output)
-//   bc  #b by dim list of positions for each handle vertex
+//   data  pre-factorized system matrix etc. (see `arap_precompute`)
+//   K     pre-constructed bi-linear term of energy combining rotations and
+//         positions
+//   U     #V by dim list of current (not necessarily at rest) positions (see output)
+//   bc    #b by dim list of positions for each handle vertex
 // Outputs:
-//   U  #V by dim list of new positions (see input)
+//   U     #V by dim list of new positions (see input)
 void arap_single_iteration(
   const igl::min_quad_with_fixed_data<double> & data,
   const Eigen::SparseMatrix<double> & K,
   const Eigen::MatrixXd & bc,
-  Eigen::MatrixXd & U);
+  Eigen::MatrixXd & U
+);
 
 #endif
