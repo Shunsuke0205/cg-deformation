@@ -1,6 +1,8 @@
 #ifndef BIHARMONIC_SOLVE_H
 #define BIHARMONIC_SOLVE_H
 #include <Eigen/Core>
+#include "igl/min_quad_with_fixed.h"
+
 
 namespace igl
 {
@@ -18,7 +20,8 @@ namespace igl
 void biharmonic_solve(
   const igl::min_quad_with_fixed_data<double> & data,
   const Eigen::MatrixXd & bc,
-  Eigen::MatrixXd & D);
+  Eigen::MatrixXd & D
+);
 
 
 #endif
